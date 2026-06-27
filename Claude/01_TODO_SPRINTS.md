@@ -2,7 +2,7 @@
 
 > Coche les cases au fur et à mesure. Demande à Claude de mettre à jour ce fichier quand une tâche est terminée, pour garder une trace de l'avancement réel.
 
-**Statut global du projet** : 🟦 En cours — Sprint 0
+**Statut global du projet** : 🟦 En cours — Sprint 1
 
 ---
 
@@ -21,9 +21,9 @@
 - [x] Déployer 2-3 fonctions Lambda simples
 
 ### Données synthétiques
-- [ ] Écrire un script Python générant des données CUR synthétiques réalistes
-- [ ] Inclure des patterns réalistes (pics le lundi, creux le week-end)
-- [ ] Inclure des anomalies volontaires (une ressource dont le coût explose un mois donné)
+- [x] Écrire un script Python générant des données CUR synthétiques réalistes
+- [x] Inclure des patterns réalistes (pics le lundi, creux le week-end)
+- [x] Inclure des anomalies volontaires (une ressource dont le coût explose un mois donné)
 
 ### Environnement de développement
 - [x] Installer Python 3.11+ et créer un environnement virtuel
@@ -35,8 +35,8 @@
 - [x] Vérifier les quotas Bedrock disponibles
 
 ### Documentation
-- [ ] Rédiger le document d'architecture v1 (diagramme + choix techniques)
-- [ ] Initialiser le repo Git du projet
+- [x] Rédiger le document d'architecture v1 (diagramme + choix techniques)
+- [x] Initialiser le repo Git du projet
 
 **Critère de fin de sprint** : tu peux lancer un script Python qui appelle Cost Explorer et récupère des données réelles depuis ton compte sandbox.
 
