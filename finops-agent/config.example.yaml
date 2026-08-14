@@ -1,0 +1,44 @@
+# FinOps Agent — Configuration (Exemple)
+# Copiez ce fichier sous le nom 'config.yaml' et configurez vos paramètres AWS et Groq
+
+aws:
+  region: eu-north-1
+  account_id: "YOUR_ACCOUNT_ID"
+
+collector:
+  lookback_days: 30
+  services:
+    - AmazonEC2
+    - AmazonRDS
+    - AmazonS3
+    - AWSLambda
+    - AmazonCloudWatch
+    - AWSDataTransfer
+
+  cloudwatch:
+    ec2_instance_ids:
+      - i-0a1b2c3d4e5f60001
+      - i-0a1b2c3d4e5f60002
+      - i-0a1b2c3d4e5f60003
+    rds_instance_id: finops-db
+    lambda_functions:
+      - finops-collector
+      - finops-analyzer
+      - finops-alerter
+    period_seconds: 3600
+
+storage:
+  bucket: finops-cur-data-louay
+  prefix: collected/
+  synthetic_prefix: cur/
+  format: parquet
+
+analyzer:
+  llm:
+    provider: groq
+    model: openai/gpt-oss-120b
+    api_key: "${GROQ_API_KEY}"
+    max_tokens: 2000  
+  output:
+    bucket: finops-cur-data-louay
+    prefix: anomalies/

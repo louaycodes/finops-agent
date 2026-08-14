@@ -45,22 +45,22 @@
 ## 🟦 SPRINT 1 — Collector Agent + Analyzer Agent (Semaines 3-4)
 
 ### Collector Agent
-- [ ] Écrire le module d'appel à l'API Cost Explorer (coûts par service, par jour)
-- [ ] Écrire le module d'appel à CloudWatch Metrics (CPU, mémoire, réseau par ressource)
-- [ ] Définir le schéma de données normalisé (format commun pour stocker les coûts)
-- [ ] Convertir/stocker les données au format Parquet dans S3
-- [ ] Créer la table Athena pour requêter les données S3 en SQL
-- [ ] Configurer EventBridge pour déclencher la collecte toutes les 24h
-- [ ] Tester la collecte sur au moins 7 jours de données (réelles + synthétiques)
+- [x] Écrire le module d'appel à l'API Cost Explorer (coûts par service, par jour)
+- [x] Écrire le module d'appel à CloudWatch Metrics (CPU, mémoire, réseau par ressource)
+- [x] Définir le schéma de données normalisé (format commun pour stocker les coûts)
+- [x] Convertir/stocker les données au format Parquet dans S3
+- [x] Créer la table Athena pour requêter les données S3 en SQL
+- [x] Configurer EventBridge pour déclencher la collecte toutes les 24h
+- [x] Tester la collecte sur au moins 7 jours de données (réelles + synthétiques)
 
 ### Analyzer Agent
-- [ ] Implémenter la détection d'anomalies avec Isolation Forest (scikit-learn)
-- [ ] Implémenter la règle "EC2 idle" (CPU moyen < 5% sur 7 jours)
-- [ ] Implémenter la règle "S3 sans accès" (pas d'accès depuis 30 jours)
-- [ ] Implémenter la règle "RDS oversized" (capacité largement sous-utilisée)
-- [ ] Définir le système de scoring de criticité (High / Medium / Low)
-- [ ] Tester l'Analyzer sur les données avec anomalies volontaires
-- [ ] Vérifier que les vraies anomalies sont bien détectées (pas de faux négatifs majeurs)
+- [x] Implémenter la détection d'anomalies avec Isolation Forest (scikit-learn)
+- [x] Implémenter la règle "EC2 idle" (CPU moyen < 5% sur 7 jours)
+- [x] Implémenter la règle "S3 sans accès" (pas d'accès depuis 30 jours)
+- [x] Implémenter la règle "RDS oversized" (capacité largement sous-utilisée)
+- [x] Définir le système de scoring de criticité (High / Medium / Low)
+- [x] Tester l'Analyzer sur les données avec anomalies volontaires
+- [x] Vérifier que les vraies anomalies sont bien détectées (pas de faux négatifs majeurs)
 
 **Critère de fin de sprint** : le pipeline Collector → Analyzer tourne automatiquement et produit une liste d'anomalies classées par criticité.
 
