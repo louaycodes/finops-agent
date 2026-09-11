@@ -4,7 +4,7 @@ Expose les endpoints /chat, /reindex, /health pour interagir avec le RAG FinOps.
 
 Lancer depuis finops-rag-api/ :
     export GROQ_API_KEY="..."
-    ../venv_rag/bin/python app.py
+    ../venv/bin/python app.py
 """
 
 import os

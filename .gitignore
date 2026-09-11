@@ -1,9 +1,9 @@
 venv/
+venv_rag/
+chroma_db/
 AWS/
 __pycache__/
 *.pyc
 .env
-lambda_package/
 *.zip
 response.json
-finops-agent/config.yaml

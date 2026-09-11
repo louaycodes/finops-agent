@@ -1,3 +1,9 @@
-# Flask RAG API dependencies
+# FinOps RAG API Dependencies
+boto3
+chromadb
 flask
 flask-cors
+groq
+pandas
+PyYAML
+sentence-transformers
