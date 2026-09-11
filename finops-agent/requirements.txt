@@ -1,0 +1,25 @@
+# FinOps Agent — Dépendances complètes
+# Installer avec : uv pip install --python ../venv_rag/bin/python -r requirements.txt
+
+# AWS
+boto3
+
+# LLM
+groq
+
+# LangGraph (pipeline orchestration)
+langchain
+langgraph
+langgraph-prebuilt
+
+# Data
+pandas
+pyarrow
+numpy
+
+# Config
+PyYAML
+
+# RAG
+chromadb
+sentence-transformers
