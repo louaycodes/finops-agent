@@ -7,3 +7,5 @@ groq
 pandas
 PyYAML
 sentence-transformers
+reportlab
+matplotlib

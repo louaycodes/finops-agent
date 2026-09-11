@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  finops-api:
+    build:
+      context: ..
+      dockerfile: finops-rag-api/Dockerfile
+    ports:
+      - "5001:5001"
+    environment:
+      - GROQ_API_KEY=${GROQ_API_KEY}
+      - SLACK_WEBHOOK_URL=${SLACK_WEBHOOK_URL}
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - AWS_DEFAULT_REGION=eu-north-1
+    restart: unless-stopped
