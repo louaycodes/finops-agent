@@ -7,3 +7,6 @@ __pycache__/
 .env
 *.zip
 response.json
+
+finops-dashboard/node_modules/
+finops-dashboard/.angular/
