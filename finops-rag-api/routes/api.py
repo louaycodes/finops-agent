@@ -1,3 +1,8 @@
+from flask import send_file
+import io
+import os
+import sys
+import boto3
 """
 Routes /api/* — FinOps RAG API
 Expose les données S3 (anomalies, prévisions, recommandations, métriques)
@@ -212,3 +217,89 @@ def trigger_pipeline():
         "status": "pipeline_started",
         "message": "Pipeline lancé en arrière-plan. Résultats disponibles dans S3.",
     })
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# GET /api/report/generate
+# ─────────────────────────────────────────────────────────────────────────────
+
+finops_agent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../finops-agent'))
+if finops_agent_dir not in sys.path:
+    sys.path.insert(0, finops_agent_dir)
+
+from reporter.main import generate_report_pipeline
+
+@api_bp.route('/report/generate', methods=['GET'])
+def generate_report():
+    try:
+        s3_key, pdf_bytes = generate_report_pipeline()
+        filename = s3_key.split('/')[-1]
+        
+        return send_file(
+            io.BytesIO(pdf_bytes),
+            mimetype='application/pdf',
+            as_attachment=True,
+            download_name=filename
+        )
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+@api_bp.route('/report/list', methods=['GET'])
+def list_reports():
+    try:
+        s3 = boto3.client('s3')
+        bucket = "finops-cur-data-louay"
+        prefix = "reports/"
+        
+        response = s3.list_objects_v2(Bucket=bucket, Prefix=prefix)
+        reports = []
+        if 'Contents' in response:
+            for obj in response['Contents']:
+                if obj['Key'].endswith('.pdf'):
+                    filename = obj['Key'].split('/')[-1]
+                    generated_at = obj['LastModified'].strftime("%Y-%m-%d %H:%M:%S")
+                    size_kb = int(obj['Size'] / 1024)
+                    reports.append({
+                        "filename": filename,
+                        "generated_at": generated_at,
+                        "size_kb": size_kb
+                    })
+                    
+        reports = sorted(reports, key=lambda x: x['generated_at'], reverse=True)
+        return jsonify({"reports": reports})
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+@api_bp.route('/report/download/<filename>', methods=['GET'])
+def download_report(filename):
+    try:
+        s3 = boto3.client('s3')
+        bucket = "finops-cur-data-louay"
+        key = f"reports/{filename}"
+        
+        response = s3.get_object(Bucket=bucket, Key=key)
+        pdf_bytes = response['Body'].read()
+        
+        return send_file(
+            io.BytesIO(pdf_bytes),
+            mimetype='application/pdf',
+            as_attachment=True,
+            download_name=filename
+        )
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+# ─────────────────────────────────────────────────────────────────────────────
+# POST /api/alert/test
+# ─────────────────────────────────────────────────────────────────────────────
+
+from alerting.main import run as alerting_run
+
+@api_bp.route('/alert/test', methods=['POST'])
+def test_alert():
+    try:
+        config = current_app.finops_config
+        result = alerting_run(config=config)
+        return jsonify(result)
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500

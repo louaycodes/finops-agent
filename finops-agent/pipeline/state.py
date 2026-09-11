@@ -29,6 +29,10 @@ class FinOpsState(TypedDict):
     recommender_status: str  # "success" | "failed" | "skipped"
     recommendations_count: int
 
+    # ── Alerting ──────────────────────────────────────────────
+    alerting_status: str     # "success" | "failed" | "skipped"
+    alerts_sent: int
+
     # ── RAG ───────────────────────────────────────────────────
     rag_status: str          # "success" | "failed" | "skipped"
 

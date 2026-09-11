@@ -143,6 +143,33 @@ def node_recommender(state: FinOpsState) -> FinOpsState:
 
 
 # ─────────────────────────────────────────────────────────────
+# Nœud Alerting
+# ─────────────────────────────────────────────────────────────
+
+def node_alerting(state: FinOpsState) -> FinOpsState:
+    print("\n" + "═" * 60)
+    print("🔄 PIPELINE — Nœud Alerting")
+    print("═" * 60)
+    try:
+        from alerting.main import run
+        metrics = run(config=state["config"])
+        return {
+            **state,
+            "alerting_status": metrics.get("status", "success"),
+            "alerts_sent": metrics.get("alerts_sent", 0),
+        }
+    except Exception as exc:
+        msg = f"[Alerting] {type(exc).__name__}: {exc}"
+        print(f"❌ {msg}")
+        return {
+            **state,
+            "alerting_status": "failed",
+            "alerts_sent": 0,
+            "errors": state["errors"] + [msg],
+        }
+
+
+# ─────────────────────────────────────────────────────────────
 # Nœud RAG Indexer (sans boucle interactive)
 # ─────────────────────────────────────────────────────────────
 

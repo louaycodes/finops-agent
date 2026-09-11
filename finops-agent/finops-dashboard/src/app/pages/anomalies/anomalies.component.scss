@@ -1,0 +1,59 @@
+.page-header {
+  margin-bottom: 2rem;
+  
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+}
+
+.filters {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding: 1rem 1.5rem;
+  
+  .filter-label {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+  
+  .filter-btn {
+    background: transparent;
+    border: 1px solid var(--card-border);
+    color: var(--text-primary);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    
+    &:hover {
+      background: rgba(255, 255, 255, 0.05);
+    }
+    
+    &.active {
+      background: var(--accent-color);
+      border-color: var(--accent-color);
+      color: white;
+    }
+  }
+}
+
+.table-container {
+  overflow-x: auto;
+  
+  .loading-state, .empty-state {
+    padding: 3rem;
+    text-align: center;
+    color: var(--text-secondary);
+  }
+  
+  .cost-cell {
+    color: var(--color-high);
+    font-weight: 600;
+  }
+}

@@ -1,0 +1,121 @@
+.page-header {
+  margin-bottom: 2rem;
+  
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+}
+
+.generate-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  
+  .info {
+    h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-primary);
+    }
+    p {
+      color: var(--text-secondary);
+      font-size: 0.875rem;
+    }
+  }
+}
+
+.reports-list {
+  padding: 2rem;
+  
+  h2 {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .file-name {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-primary);
+    font-weight: 500;
+    
+    svg {
+      color: var(--accent-color);
+    }
+  }
+  
+  .btn-download {
+    background: transparent;
+    border: 1px solid var(--card-border);
+    color: var(--text-primary);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    
+    &:hover:not(:disabled) {
+      background: rgba(255, 255, 255, 0.1);
+    }
+    
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+  
+  .loading-state, .empty-state {
+    padding: 3rem;
+    text-align: center;
+    color: var(--text-secondary);
+  }
+}
+
+.spinner-small {
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 1s ease-in-out infinite;
+}
+
+.spinner-small-dark {
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  border-top-color: var(--text-primary);
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.toast {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: var(--color-low);
+  color: white;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 500;
+  transform: translateY(100px);
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  z-index: 1000;
+  
+  &.show {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

@@ -15,6 +15,7 @@ from pipeline.nodes import (
     node_analyzer,
     node_forecaster,
     node_recommender,
+    node_alerting,
     node_rag_indexer,
 )
 
@@ -53,6 +54,7 @@ def build_graph() -> StateGraph:
     graph.add_node("analyzer", node_analyzer)
     graph.add_node("forecaster", node_forecaster)
     graph.add_node("recommender", node_recommender)
+    graph.add_node("alerting", node_alerting)
     graph.add_node("rag_indexer", node_rag_indexer)
 
     # ── Point d'entrée ────────────────────────────────────────
@@ -81,7 +83,8 @@ def build_graph() -> StateGraph:
 
     # ── Edges séquentiels ─────────────────────────────────────
     graph.add_edge("forecaster", "recommender")
-    graph.add_edge("recommender", "rag_indexer")
+    graph.add_edge("recommender", "alerting")
+    graph.add_edge("alerting", "rag_indexer")
     graph.add_edge("rag_indexer", END)
 
     return graph.compile()

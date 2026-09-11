@@ -1,0 +1,100 @@
+.page-header {
+  margin-bottom: 2rem;
+  
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+}
+
+.loading-state, .empty-state {
+  padding: 4rem 2rem;
+  text-align: center;
+  color: var(--text-secondary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  
+  svg {
+    color: var(--color-low);
+    margin-bottom: 1rem;
+  }
+  
+  h3 {
+    color: var(--text-primary);
+    font-size: 1.25rem;
+  }
+}
+
+.recommendations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 1.5rem;
+  
+  .rec-card {
+    display: flex;
+    flex-direction: column;
+    
+    .rec-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.25rem;
+      
+      .service-tag {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.875rem;
+        color: var(--text-secondary);
+        font-weight: 500;
+      }
+    }
+    
+    .action-title {
+      font-size: 1.25rem;
+      margin-bottom: 0.75rem;
+      line-height: 1.4;
+    }
+    
+    .description {
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+      flex: 1;
+    }
+    
+    .rec-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--card-border);
+      
+      .savings, .effort {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+        
+        .label {
+          font-size: 0.75rem;
+          color: var(--text-secondary);
+          text-transform: uppercase;
+        }
+      }
+      
+      .savings .amount {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--color-low);
+      }
+      
+      .effort .value {
+        font-size: 1rem;
+        font-weight: 500;
+        color: var(--text-primary);
+      }
+    }
+  }
+}
