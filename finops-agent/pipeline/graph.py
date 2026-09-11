@@ -10,6 +10,7 @@ Flux :
 from langgraph.graph import StateGraph, END
 from pipeline.state import FinOpsState
 from pipeline.nodes import (
+    node_discovery,
     node_collector,
     node_analyzer,
     node_forecaster,
@@ -47,6 +48,7 @@ def build_graph() -> StateGraph:
     graph = StateGraph(FinOpsState)
 
     # ── Ajout des nœuds ───────────────────────────────────────
+    graph.add_node("discovery", node_discovery)
     graph.add_node("collector", node_collector)
     graph.add_node("analyzer", node_analyzer)
     graph.add_node("forecaster", node_forecaster)
@@ -54,7 +56,8 @@ def build_graph() -> StateGraph:
     graph.add_node("rag_indexer", node_rag_indexer)
 
     # ── Point d'entrée ────────────────────────────────────────
-    graph.set_entry_point("collector")
+    graph.set_entry_point("discovery")
+    graph.add_edge("discovery", "collector")
 
     # ── Edge conditionnel : collector → analyzer | END ────────
     graph.add_conditional_edges(

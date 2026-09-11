@@ -9,6 +9,10 @@ class FinOpsState(TypedDict):
     # Configuration globale transmise à chaque agent
     config: dict
 
+    # ── Discovery ─────────────────────────────────────────────
+    discovery_status: str    # "success" | "failed" | "skipped"
+    discovery_resources: int
+
     # ── Collector ─────────────────────────────────────────────
     collector_status: str    # "success" | "failed" | "skipped"
     collector_rows: int

@@ -27,6 +27,8 @@ def run():
     # ── État initial ──────────────────────────────────────────
     initial_state: FinOpsState = {
         "config": config,
+        "discovery_status": "skipped",
+        "discovery_resources": 0,
         "collector_status": "skipped",
         "collector_rows": 0,
         "analyzer_status": "skipped",
@@ -50,6 +52,9 @@ def run():
     print("\n" + "═" * 60)
     print("📊 RÉSUMÉ FINAL DU PIPELINE")
     print("═" * 60)
+
+    icon = _status_icon(final_state.get("discovery_status", "skipped"))
+    print(f"  {icon} Discovery      → {final_state.get('discovery_status', 'skipped'):8s}  |  {final_state.get('discovery_resources', 0)} ressources (si activé)")
 
     icon = _status_icon(final_state["collector_status"])
     print(f"  {icon} Collector      → {final_state['collector_status']:8s}  |  {final_state['collector_rows']} lignes collectées")
