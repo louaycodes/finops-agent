@@ -122,6 +122,7 @@ collector:
     - default
     - default
     - default
+    - default
     rds:snapshot:
     - finops-db-2026-09-06-02-02
     - finops-db-2026-09-07-02-02
@@ -152,6 +153,9 @@ collector:
     - AwsDataCatalog
     - AwsDataCatalog
     - AwsDataCatalog
+    - AwsDataCatalog
+    - AwsDataCatalog
+    - AwsDataCatalog
     ec2:route-table:
     - rtb-0c83496820623fcc8
     - rtb-003880e4b2480edcf
@@ -176,10 +180,14 @@ collector:
     - sgr-0a49a48fc44a2a823
     - sgr-0c99758bb45833d30
     - sgr-065edec7a8e113267
+    - sgr-0f38fa0ff72564e33
+    - sgr-01b6990db2e3b5de4
+    - sgr-0bb3d8df0f931b9d1
     - sgr-025daa4d01fdbb929
     - sgr-0e715150096b610eb
     - sgr-0aedd45f60044aece
     - sgr-0d4c37902f8ca5bcb
+    - sgr-02e712117c0467dc9
     - sgr-023dfcee67ba300ed
     - sgr-07d53193e901d8f7a
     ec2:dhcp-options:
@@ -230,6 +238,14 @@ collector:
     - primary
     - primary
     - primary
+    - primary
+    - primary
+    xray:sampling-rule:
+    - Default
+    - Default
+    - Default
+    - Default
+    - Default
     iam:policy:
     - PolitiqueDuUserIAMFinOpsAgentDevStage4eme
     logs:log-group:
@@ -266,6 +282,12 @@ collector:
     - default
     - default
     - default
+    - default
+    - default
+    - default
+    - default
+    - default
+    - default
     lambda:function:
     - finops-collector
     - finops-analyzer
@@ -276,17 +298,14 @@ collector:
     - i-072363b796c653791
     - i-009af27e544641905
     - i-028c352b124fc4acb
-    xray:sampling-rule:
-    - Default
-    - Default
-    - Default
-    - Default
     glue:table:
     - collected
     events:rule:
     - finops-collector-daily
     rds:pg:
     - default.mysql8.4
+    dynamodb:table:
+    - tableDeTestDeAgentDiscovery
 storage:
   bucket: finops-cur-data-louay
   prefix: collected/
