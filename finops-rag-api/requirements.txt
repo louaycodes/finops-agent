@@ -1,0 +1,3 @@
+# Flask RAG API dependencies
+flask
+flask-cors
