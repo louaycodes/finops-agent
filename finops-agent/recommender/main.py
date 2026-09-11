@@ -14,10 +14,15 @@ def load_config(path: str = "config.yaml") -> dict:
         return yaml.safe_load(f)
 
 
-def run():
+def run(config: dict | None = None) -> dict:
+    """
+    Exécute le Recommender Agent.
+    Retourne un dict de métriques pour le pipeline LangGraph.
+    """
     print("🚀 Recommender Agent démarré\n")
 
-    config = load_config()
+    if config is None:
+        config = load_config()
 
     # Chargement des données (anomalies + prévisions)
     inputs = load_inputs(config)
@@ -36,6 +41,12 @@ def run():
     print(f"   Recommandations : {nb}")
     print(f"   Économies estimées : ${savings:.2f}")
     print(f"   {summary}")
+
+    return {
+        "recommendations_count": nb,
+        "total_estimated_savings_usd": savings,
+        "s3_path": s3_path,
+    }
 
 
 if __name__ == "__main__":

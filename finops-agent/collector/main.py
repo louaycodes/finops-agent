@@ -14,10 +14,15 @@ def load_config(path: str = "config.yaml") -> dict:
         return yaml.safe_load(f)
 
 
-def run():
+def run(config: dict | None = None) -> dict:
+    """
+    Exécute le Collector Agent.
+    Retourne un dict de métriques pour le pipeline LangGraph.
+    """
     print("🚀 Collector Agent démarré\n")
 
-    config = load_config()
+    if config is None:
+        config = load_config()
 
     # Collecte Cost Explorer
     cost_rows = fetch_costs(config)
@@ -33,6 +38,11 @@ def run():
     s3_path = save_to_s3(all_rows, config)
 
     print(f"\n✅ Collector Agent terminé → {s3_path}")
+
+    return {
+        "rows": len(all_rows),
+        "s3_path": s3_path,
+    }
 
 
 if __name__ == "__main__":

@@ -4,6 +4,7 @@ Envoie les métriques à Groq et parse les anomalies détectées.
 """
 
 import json
+import os
 from groq import Groq
 
 
@@ -35,7 +36,9 @@ def analyze(summary: dict, config: dict) -> dict:
     Envoie le résumé des métriques à Groq et retourne les anomalies détectées.
     """
     llm_config = config["analyzer"]["llm"]
-    api_key = llm_config["api_key"]
+    api_key = os.environ.get("GROQ_API_KEY")
+    if not api_key:
+        raise EnvironmentError("Variable d'environnement GROQ_API_KEY non définie.")
     model = llm_config["model"]
     max_tokens = llm_config["max_tokens"]
 

@@ -16,10 +16,37 @@ def load_config(path: str = "config.yaml") -> dict:
         return yaml.safe_load(f)
 
 
-def run():
+def index_only(config: dict | None = None) -> dict:
+    """
+    Indexe les données S3 dans ChromaDB sans lancer la boucle interactive.
+    Utilisé par le pipeline LangGraph.
+    Retourne un dict de métriques.
+    """
+    print("🚀 RAG Indexer démarré\n")
+
+    if config is None:
+        config = load_config()
+
+    collection = index_data(config)
+    doc_count = collection.count()
+
+    print(f"\n✅ RAG Indexer terminé — {doc_count} documents indexés dans ChromaDB")
+
+    return {
+        "indexed_documents": doc_count,
+        "collection": "finops",
+    }
+
+
+def run(config: dict | None = None) -> dict:
+    """
+    Exécute le RAG Agent complet (indexation + boucle interactive).
+    Retourne un dict de métriques pour le pipeline LangGraph.
+    """
     print("🚀 RAG Agent démarré\n")
 
-    config = load_config()
+    if config is None:
+        config = load_config()
 
     # ── Indexation S3 → ChromaDB ───────────────────────────────
     collection = index_data(config)
@@ -57,6 +84,11 @@ def run():
 
         print(f"\n🤖 Réponse :\n{answer}\n")
         print("─" * 60 + "\n")
+
+    return {
+        "indexed_documents": collection.count(),
+        "collection": "finops",
+    }
 
 
 if __name__ == "__main__":

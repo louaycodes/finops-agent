@@ -7,8 +7,7 @@ boto3
 # LLM
 groq
 
-# LangGraph (pipeline orchestration)
-langchain
+# Pipeline orchestration
 langgraph
 langgraph-prebuilt
 
