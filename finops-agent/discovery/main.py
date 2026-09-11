@@ -1,7 +1,7 @@
 """
 Main — Discovery Agent
 Charge config.yaml, découvre les ressources AWS via Resource Explorer v2,
-met à jour la config et l'enregistre.
+met à jour la config avec toutes les ressources dynamiquement, et l'enregistre.
 """
 
 import yaml
@@ -35,47 +35,25 @@ def run(config: dict) -> dict:
         for res_type, items in discovered.items():
             print(f"   • {res_type} : {len(items)} ressource(s)")
 
-    # Extraction des services ciblés (gère différentes casses retournées par l'API)
-    ec2_ids = discovered.get("ec2:instance", []) or discovered.get("EC2::Instance", [])
-    rds_ids = discovered.get("rds:db", []) or discovered.get("RDS::DBInstance", [])
-    lambda_fns = discovered.get("lambda:function", []) or discovered.get("Lambda::Function", [])
-    s3_buckets = discovered.get("s3:bucket", []) or discovered.get("S3::Bucket", [])
-
     # ── Mise à jour de la configuration ───────────────────────
     if "collector" not in config:
         config["collector"] = {}
-    if "cloudwatch" not in config["collector"]:
-        config["collector"]["cloudwatch"] = {}
-
-    cw_config = config["collector"]["cloudwatch"]
-
-    # Mise à jour EC2
-    cw_config["ec2_instance_ids"] = ec2_ids
-
-    # Mise à jour RDS (la config CloudWatch utilise rds_instance_id simple)
-    if rds_ids:
-        cw_config["rds_instance_id"] = rds_ids[0]
-    else:
-        cw_config["rds_instance_id"] = ""
-
-    # Mise à jour Lambda
-    cw_config["lambda_functions"] = lambda_fns
-    
-    # Ajout des buckets S3
-    cw_config["s3_buckets"] = s3_buckets
+        
+    # Enregistre le dictionnaire complet retourné par Resource Explorer
+    config["collector"]["discovered_resources"] = discovered
 
     # Sauvegarde
     config_path = os.path.join(os.path.dirname(__file__), "..", "config.yaml")
     save_config(config, config_path)
 
-    print(f"\n✅ config.yaml mis à jour avec EC2 ({len(ec2_ids)}), RDS ({len(rds_ids)}), Lambda ({len(lambda_fns)}) et S3 ({len(s3_buckets)}).")
+    total_resources = sum(len(items) for items in discovered.values())
+    print(f"\n✅ config.yaml mis à jour avec {total_resources} ressource(s) au total (section discovered_resources).")
 
-    return {
-        "ec2_count": len(ec2_ids),
-        "rds_count": len(rds_ids),
-        "lambda_count": len(lambda_fns),
-        "s3_count": len(s3_buckets)
-    }
+    # On retourne un dictionnaire avec le compte par type, plus le total
+    metrics = {f"{res_type}_count": len(items) for res_type, items in discovered.items()}
+    metrics["total_count"] = total_resources
+    
+    return metrics
 
 
 if __name__ == "__main__":

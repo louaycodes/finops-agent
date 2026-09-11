@@ -25,6 +25,268 @@ collector:
     - finops-forgotten-louay
     - finops-cur-data-louay
     - finops-logs-louay
+  discovered_resources:
+    ec2:subnet:
+    - subnet-0558567e17d860059
+    - subnet-045f3e3b6c221c494
+    - subnet-06354659b8095aa00
+    - subnet-017bee060ce4ecafb
+    - subnet-01f5a1a34167a48c7
+    - subnet-0665a479722e4107a
+    - subnet-07d835234710851a5
+    - subnet-0e82ad019ceedc08c
+    - subnet-03d58c6c2664de159
+    - subnet-07b6cb9b15f394591
+    - subnet-04daf389bda3d1d79
+    - subnet-0eed7672879f7a87d
+    - subnet-0076c9652f3e6ae2e
+    - subnet-09ab57146981f2e4e
+    - subnet-0dc74c3b400e91e7d
+    - subnet-0f975bd9315134b9d
+    - subnet-0371d994dd833e59f
+    - subnet-06a8506629121f6e7
+    - subnet-01b5385cd4ff6b7b8
+    - subnet-091ffd6d08be3dd5e
+    - subnet-067f0232ba2617b60
+    - subnet-0a1c3ec8cbe88f222
+    - subnet-09f77e8f8f41154b5
+    - subnet-056aa49b5c5e4795e
+    - subnet-0a1c323b3f13a35cc
+    - subnet-07b1596778580d6cf
+    - subnet-068216b49c081ef58
+    - subnet-0e9b39f154fcb8d56
+    - subnet-0ffedc589d3fec0aa
+    - subnet-0bbee8b6eb88f2fd6
+    - subnet-0fdbc63d7b355368f
+    - subnet-0ce4dc4eac5bfcddb
+    - subnet-06e0fa520d89a1fd7
+    - subnet-0daced8a0516239de
+    - subnet-062484e1b30d1213d
+    - subnet-0b88ab63ee712934c
+    - subnet-0c1f2ce37da12845a
+    - subnet-09453ccdd7e93b877
+    - subnet-0d1f1bd9e44074ac2
+    - subnet-0f2f74f2b2707f5bc
+    - subnet-03720aa525db540ed
+    - subnet-02e4857b4d076144a
+    - subnet-05538799540d72805
+    - subnet-0a1ee3c5dcb0ef0ca
+    - subnet-05105f5ca8ded717f
+    - subnet-001ea4a97d933efce
+    - subnet-01cfe2dae745e4a70
+    - subnet-05513f429335b769f
+    - subnet-0dd7814b47e21c614
+    - subnet-05a8f159be08a0552
+    ec2:key-pair:
+    - key-091f3cf1e1d33bd23
+    ec2:security-group:
+    - sg-03088d1371575a094
+    - sg-03779559571a113ee
+    - sg-0a91d7a53f2766ea4
+    - sg-03fcb6c3c1dbb6677
+    - sg-0103a60d2ddef1276
+    - sg-0dd227865b4a6ce2b
+    - sg-060d07d95f2a1040d
+    - sg-00a46c50e20729441
+    - sg-03b0199ceaaf1396e
+    - sg-0fe481ac85c7d45bd
+    - sg-0992af435e629290a
+    - sg-000b0fd9e6d4e30b1
+    - sg-0922b625704124059
+    - sg-036aa96bbcb8fefc2
+    - sg-09ea8c07ce5ca3f90
+    - sg-0f90ecdb77208edb5
+    - sg-052b2ba7bae0fabee
+    rds:db:
+    - finops-db
+    ec2:internet-gateway:
+    - igw-0bdf06075a4cc647d
+    - igw-07f9b43d8de4f1ffe
+    - igw-01451e3d27cbbad69
+    - igw-0c19d8eb73d0499b8
+    - igw-0c17b23f9800e350b
+    - igw-09845bba32b080f29
+    - igw-06bb3a2b18c323490
+    - igw-063c7c48bce4514b4
+    - igw-0e49a079c633a4b23
+    - igw-050deaa49d8b6393c
+    - igw-079815fedd63e6c8a
+    - igw-024c9cefcdae6fbd1
+    - igw-01c5263cf5714ff03
+    - igw-035d2a75f9c5ea6c2
+    - igw-097a3febf8dbe87b9
+    - igw-08235f346c26dba8e
+    elasticache:user:
+    - default
+    - default
+    - default
+    - default
+    - default
+    rds:snapshot:
+    - finops-db-2026-09-06-02-02
+    - finops-db-2026-09-07-02-02
+    - finops-db-2026-09-08-02-02
+    resource-explorer-2:index:
+    - 6b2e26f9-20a6-4bf1-bcce-84609dc4ab78
+    - 0753e72a-1c9f-4220-9341-631daafe6417
+    - de7ae977-a77c-48aa-bb58-5250fdf3d3f0
+    - 5e57b62f-de99-4282-92b5-97188570ffde
+    - f1e7b683-8457-47d7-bc36-2bf6c7009ab8
+    - e7a9e8c1-3caf-4816-bed4-13ba7c973214
+    - 5bff993a-5b07-4f52-bb4b-1eaf24f1ec9e
+    - 2be36668-3ffb-42a8-bf1d-51c57adb0722
+    - 0492fe89-0300-4a78-ac0a-44e8fc15fd69
+    - dd501442-6ba9-4ae4-9564-d1110e410839
+    - d15a78a6-63f7-46b1-8a73-7b20128b4ee3
+    - 88b75392-115b-4b77-93b1-9d56dc25fe5f
+    - 88714600-6239-4812-ae64-2f97452e61a7
+    - 270363d7-3b94-4ce0-a7e3-3d509dafa6d8
+    - b3fd1485-b766-4fe5-8979-9c23e8e46073
+    - 055f0615-23b3-4934-a19e-805676ad16de
+    rds:subgrp:
+    - default-vpc-0418bae0181e098e1
+    athena:datacatalog:
+    - AwsDataCatalog
+    - AwsDataCatalog
+    - AwsDataCatalog
+    - AwsDataCatalog
+    - AwsDataCatalog
+    - AwsDataCatalog
+    ec2:route-table:
+    - rtb-0c83496820623fcc8
+    - rtb-003880e4b2480edcf
+    - rtb-07c620789790820b2
+    - rtb-03ab1459f9408d52d
+    - rtb-0913a89b6227fa850
+    - rtb-0004fead2da0e557f
+    - rtb-09a1331021239343c
+    - rtb-0f205dac1a2e2aee2
+    - rtb-060b240e1a1168e49
+    - rtb-0adfc6eab9dd47c7f
+    - rtb-07fafd11938b3c085
+    - rtb-0d72c9dbb8ea01e2c
+    - rtb-004af3c51442e8a3b
+    - rtb-061cbbb081c2493e2
+    - rtb-06880c42081df19cf
+    - rtb-08e9d1dfcdf9a3ad3
+    ec2:security-group-rule:
+    - sgr-041e5afd097ba8717
+    - sgr-0a64e32cb62435aba
+    - sgr-07562ca6e015b238a
+    - sgr-0a49a48fc44a2a823
+    - sgr-0c99758bb45833d30
+    - sgr-065edec7a8e113267
+    - sgr-025daa4d01fdbb929
+    - sgr-0e715150096b610eb
+    - sgr-0aedd45f60044aece
+    - sgr-0d4c37902f8ca5bcb
+    - sgr-023dfcee67ba300ed
+    - sgr-07d53193e901d8f7a
+    ec2:dhcp-options:
+    - dopt-01a55c45c6d440d61
+    - dopt-048502cd6917b8bf8
+    - dopt-0c7332d9e847edcf1
+    - dopt-0859921a3a9786678
+    - dopt-094992a3f10858243
+    - dopt-0d3613bdf09d1ac6f
+    - dopt-029050a298ad78192
+    - dopt-0ed604b253e3eb49c
+    - dopt-020beafef757e56bd
+    - dopt-0fdd530efb42799cd
+    - dopt-0d399d9121beddc80
+    - dopt-005713ec76a4ca852
+    - dopt-00aa76508f43190c0
+    - dopt-022ded28798c2481a
+    - dopt-08d614d344430d295
+    - dopt-0587e3f8bc455bc2e
+    kms:key:
+    - 31be3d8f-922b-4d03-be6e-cd27b52f54b2
+    - 2348bff5-83d8-47fb-b884-8bbd7e011f8b
+    s3:bucket:
+    - finops-forgotten-louay
+    - finops-cur-data-louay
+    - finops-logs-louay
+    ec2:network-acl:
+    - acl-08be109a5f5ec41b0
+    - acl-06aa8034bcfafb90c
+    - acl-069ec8eb3cec40c4d
+    - acl-0aed08aabe6b8a115
+    - acl-0c130742142ae7312
+    - acl-04a92f17332865f48
+    - acl-0831fb50a5da84d73
+    - acl-0650f386f0af1baa3
+    - acl-0d5f8ef44b018faec
+    - acl-0cf489f8a26f73eb1
+    - acl-0d2e5caa35e96e1a3
+    - acl-006a1ff966d9b4565
+    - acl-0752f516457152c8e
+    - acl-01660ec4910424a1d
+    - acl-0b4b16d184b01ad4c
+    - acl-07f62db90a3756c98
+    glue:database:
+    - finops
+    - default
+    athena:workgroup:
+    - primary
+    - primary
+    - primary
+    iam:policy:
+    - PolitiqueDuUserIAMFinOpsAgentDevStage4eme
+    logs:log-group:
+    - finops-collector
+    - RDSOSMetrics
+    ec2:network-interface:
+    - eni-06e29fba72373fa09
+    - eni-0c174a1e4ae447ede
+    - eni-06963a3314c6f4a5c
+    - eni-04ea283e943ff98f9
+    lambda:function/version:
+    - $LATEST
+    - $LATEST
+    - $LATEST
+    rds:auto-backup:
+    - ab-asoncroxcapzhmv6k2gkv3thdsme3fesy4hyyk5tyazejp37ivw2hua5coostmxq
+    ec2:vpc:
+    - vpc-0e0512c46413bf5ac
+    - vpc-0474198b6409a99ff
+    - vpc-0c217052994b1f348
+    - vpc-0be053256e92fe10f
+    - vpc-0c4407c0fdf735867
+    - vpc-0418bae0181e098e1
+    resource-explorer-2:view:
+    - 1a728ce6-e3a3-44f0-ac3f-50594632f450
+    ec2:volume:
+    - vol-0965140e228f66832
+    - vol-093d3969640051e8b
+    - vol-087c5fb8771200769
+    events:event-bus:
+    - default
+    - default
+    - default
+    - default
+    - default
+    - default
+    lambda:function:
+    - finops-collector
+    - finops-analyzer
+    - finops-alerter
+    rds:og:
+    - mysql-8-4
+    ec2:instance:
+    - i-072363b796c653791
+    - i-009af27e544641905
+    - i-028c352b124fc4acb
+    xray:sampling-rule:
+    - Default
+    - Default
+    - Default
+    - Default
+    glue:table:
+    - collected
+    events:rule:
+    - finops-collector-daily
+    rds:pg:
+    - default.mysql8.4
 storage:
   bucket: finops-cur-data-louay
   prefix: collected/

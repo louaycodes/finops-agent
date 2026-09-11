@@ -16,28 +16,14 @@ def node_discovery(state: FinOpsState) -> FinOpsState:
     print("🔄 PIPELINE — Nœud Discovery")
     print("═" * 60)
     try:
-        cw_config = state["config"].get("collector", {}).get("cloudwatch", {})
-        has_ec2 = bool(cw_config.get("ec2_instance_ids"))
-        has_rds = bool(cw_config.get("rds_instance_id"))
-        has_lambda = bool(cw_config.get("lambda_functions"))
-        has_s3 = bool(cw_config.get("s3_buckets"))
-        
-        if not (has_ec2 or has_rds or has_lambda or has_s3):
-            from discovery.main import run
-            metrics = run(config=state["config"])
-            total_resources = metrics.get("ec2_count", 0) + metrics.get("rds_count", 0) + metrics.get("lambda_count", 0) + metrics.get("s3_count", 0)
-            return {
-                **state,
-                "discovery_status": "success",
-                "discovery_resources": total_resources,
-            }
-        else:
-            print("ℹ️  Ressources déjà configurées — Discovery ignoré.")
-            return {
-                **state,
-                "discovery_status": "skipped",
-                "discovery_resources": 0,
-            }
+        from discovery.main import run
+        metrics = run(config=state["config"])
+        total_resources = metrics.get("total_count", 0)
+        return {
+            **state,
+            "discovery_status": "success",
+            "discovery_resources": total_resources,
+        }
     except Exception as exc:
         msg = f"[Discovery] {type(exc).__name__}: {exc}"
         print(f"❌ {msg}")
